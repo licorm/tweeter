@@ -17,3 +17,9 @@ span {
 .new-tweet-nav {
   font-size: x-large;
 }
+
+.fas {
+  display: flex;
+  justify-content: center;
+  color: crimson;
+}
