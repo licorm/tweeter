@@ -1,0 +1,27 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+button {
+  background-color: plum;
+}
+.submission-button {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee";
+  margin-top: 13px;
+}
+
+#tweet-text {
+  background-color: #f4f1ec;
+  border-style: none;
+  border-bottom: 3px solid plum;
+}
+
+label {
+  z-index: 2;
+}
+
+
