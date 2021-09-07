@@ -16,7 +16,7 @@ button {
 }
 
 #tweet-text {
-  background-color: #f4f1ec;
+  background-color: transparent;
   border-style: none;
   border-bottom: 3px solid plum;
 }
