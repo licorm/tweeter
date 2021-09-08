@@ -58,13 +58,28 @@ const createTweetElement = function(obj) {
   return $tweet;
 }
 
-//const $tweet = createTweetElement(tweetData);
 
-// Test / driver code (temporary)
 $( document ).ready(function() {
+  
+
+
   $('#tweets-container').append(renderTweets(data));
+  
+  //using jquery to add event listener for submitting tweets
+  $('form').submit(function(event) {
+      console.log("submitting form");
+      event.preventDefault();
+
+      //use jquery to serialize data and send to server as ajax post
+
+      const serializedData = $(this).serialize();
+
+      $.post("/tweets", serializedData, (response) => {
+        console.log(serializedData);
+      });
+  })
+
 });
 
-//console.log($tweet); // to see what it looks like
-//$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+
 
