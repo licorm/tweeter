@@ -61,10 +61,6 @@ const createTweetElement = function(obj) {
 
 $( document ).ready(function() {
   
-
-
-  $('#tweets-container').append(renderTweets(data));
-  
   //using jquery to add event listener for submitting tweets
   $('form').submit(function(event) {
       console.log("submitting form");
@@ -78,6 +74,16 @@ $( document ).ready(function() {
         console.log(serializedData);
       });
   })
+
+  //function for fetching tweets from /tweets
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+    .then(function (response) {
+      $('#tweets-container').append(renderTweets(response));
+    });
+  }
+  
+  loadTweets();
 
 });
 
