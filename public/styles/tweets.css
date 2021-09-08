@@ -1,0 +1,42 @@
+article.tweet {
+  display: flex;
+  border: 3px solid plum;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 0.5em;
+  flex-direction: column;
+  font-weight: 300;
+  font-size: large;
+}
+
+article.tweet header {
+  background: transparent;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+article.tweet footer {
+  display: flex;
+  font-size: x-small;
+  justify-content: space-between;
+}
+
+article.tweet p {
+  width: 100%;
+  border-style: none;
+  border-bottom: 3px solid plum;
+  display: flex;
+  align-self: center;
+  padding: 0.5em;
+}
+
+article.tweet div {
+  display: flex;
+  flex-direction: row;
+}
+
+article.tweet i {
+  padding: 0.2em;
+}
