@@ -57,15 +57,8 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <div id="error-message-length" style="display:none">
-          <i class="fas fa-exclamation-circle"></i>
-          Tweet must be 140 characters or less!
-          <i class="fas fa-exclamation-circle"></i>
-        </div>
-        <div id="error-message-null" style="display:none">
-          <i class="fas fa-exclamation-circle"></i>
-          Looks like you need to write something first...
-          <i class="fas fa-exclamation-circle"></i>
+        <div class="error-message" style="display:none">
+          
         </div>
         <form method="POST" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>

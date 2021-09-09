@@ -77,32 +77,20 @@ $(document).ready(function() {
     
     //error message for making sure there is input
     if (serializedData.length < 6) {
-      $(this).parents().find("#error-message-null").slideDown();
+      return $(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Looks like you need to write something first...</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
     }
-
-    //hide error when they return to form
-    $(this).on("click", () => {
-      $(this).parents().find("#error-message-null").hide();
-      return;
-    });
 
     //error message for keeping length under 140 characters
     if (serializedData.length > 145) {
-      $(this).parents().find("#error-message-length").slideDown();
-      return;
+      return $(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Our character limit is 140 characters!!</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
     }
 
-    //hide error message on click
-    $(this).on("click", () => {
-      $(this).parents().find("#error-message-length").hide();
-    });
-
     $.post("/tweets", serializedData)
-      .then(() => loadTweetsOnSubmission());
-  });
-  
-  $("form").on("submit", function() {
-    $(this).trigger("reset");
+      .then(() => {
+        loadTweetsOnSubmission()
+        $(this).trigger("reset");
+        $(".error-message").hide();
+      });
   });
 
 });

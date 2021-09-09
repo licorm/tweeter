@@ -6,8 +6,11 @@ $(document).ready(function() {
     const $inputLength = $(this).val().length;
     $counter.val(140 - $inputLength);
     //counter color === red when below 0
-    if ($counter.val() < 0) {
+    if ($counter.val() < 1) {
       $counter.css("color", "crimson");
+    }
+    if ($counter.val() > 1) {
+      $counter.css("color", "purple");
     }
   })
 });
