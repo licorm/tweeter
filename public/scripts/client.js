@@ -59,21 +59,39 @@ const createTweetElement = function(obj) {
 }
 
 
+
+
 $( document ).ready(function() {
-  
+
   //using jquery to add event listener for submitting tweets
   $('form').submit(function(event) {
-      console.log("submitting form");
-      event.preventDefault();
+    console.log("submitting form");
+    event.preventDefault();
+    
+    //use jquery to serialize data and send to server as ajax post
+    const serializedData = $(this).serialize();
+    console.log(serializedData.length)
+   if (serializedData.length < 6) {
+     alert("You need to write something to post!");
+     return;
+   }
 
-      //use jquery to serialize data and send to server as ajax post
+   if (serializedData.length > 145) {
+    alert("Only 140 characters allowed!");
+    return;
+  }
 
-      const serializedData = $(this).serialize();
-
-      $.post("/tweets", serializedData, (response) => {
-        console.log(serializedData);
-      });
+    $.post("/tweets", serializedData, (response) => {
+      console.log(serializedData);
+    })
+   
   })
+
+  $("form").on("submit", function() {
+    $(this).trigger("reset")
+  })
+  
+  
 
   //function for fetching tweets from /tweets
   const loadTweets = function() {
@@ -83,6 +101,7 @@ $( document ).ready(function() {
     });
   }
   
+  //call the function to load tweets to the page
   loadTweets();
 
 });

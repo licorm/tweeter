@@ -1,4 +1,5 @@
 //check if document is ready
+
 $(document).ready(function() {
   console.log('Ready!');
   //event handler for input in tweet-text
@@ -39,3 +40,4 @@ $(document).ready(function() {
     $flag.css('color', '');
   })
 });
+
