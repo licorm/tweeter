@@ -14,6 +14,13 @@ $(document).ready(function() {
     return $tweetString;
   };
   
+   //escape unsafe text from user
+   const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function(obj) {
     let $tweet =
     `<article class="tweet">
@@ -33,11 +40,15 @@ $(document).ready(function() {
     return $tweet;
   };
 
+  
+
   //function for fetching tweets from /tweets
   const loadTweets = function() {
     $.ajax("/tweets", { method: "GET" })
       .then(function(response) {
         $("#tweets-container").prepend(renderTweets(response));
+
+        //function to load css styling
         func();
       });
   };
@@ -50,6 +61,7 @@ $(document).ready(function() {
     $.ajax("/tweets", { method: "GET" })
       .then(function(response) {
         $("#tweets-container").empty().prepend(renderTweets(response));
+        //function to load css styling
         func();
       });
   };
@@ -59,7 +71,7 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     
     event.preventDefault();
-    
+
     //use jquery to serialize data and send to server as ajax post
     const serializedData = $(this).serialize();
     
