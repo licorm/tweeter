@@ -63,14 +63,25 @@ const createTweetElement = function(obj) {
 
 $( document ).ready(function() {
 
+  //function for fetching tweets from /tweets
+  const loadTweets = function() {
+    $.ajax('/tweets', { method: 'GET' })
+    .then(function(response) {
+      $('#tweets-container').append(renderTweets(response));
+    });
+  }
+  
+  //call the function to load tweets to the page
+  loadTweets();
+
   //using jquery to add event listener for submitting tweets
   $('form').submit(function(event) {
-    console.log("submitting form");
+    
     event.preventDefault();
     
     //use jquery to serialize data and send to server as ajax post
     const serializedData = $(this).serialize();
-    console.log(serializedData.length)
+    
    if (serializedData.length < 6) {
      alert("You need to write something to post!");
      return;
@@ -81,28 +92,14 @@ $( document ).ready(function() {
     return;
   }
 
-    $.post("/tweets", serializedData, (response) => {
-      console.log(serializedData);
-    })
-   
+    $.post("/tweets", serializedData)
+    .then(loadTweets)
+    
   })
 
   $("form").on("submit", function() {
     $(this).trigger("reset")
   })
-  
-  
-
-  //function for fetching tweets from /tweets
-  const loadTweets = function() {
-    $.ajax('/tweets', { method: 'GET' })
-    .then(function (response) {
-      $('#tweets-container').append(renderTweets(response));
-    });
-  }
-  
-  //call the function to load tweets to the page
-  loadTweets();
 
 });
 
