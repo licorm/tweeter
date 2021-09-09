@@ -93,7 +93,7 @@ $( document ).ready(function() {
   }
 
     $.post("/tweets", serializedData)
-    .then(loadTweets)
+    .then(loadTweets())
     
   })
 
