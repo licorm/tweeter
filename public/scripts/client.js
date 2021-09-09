@@ -111,6 +111,7 @@ $( document ).ready(function() {
     });
   }
 
+
   //using jquery to add event listener for submitting tweets
   $('form').submit(function(event) {
     
@@ -119,23 +120,31 @@ $( document ).ready(function() {
     //use jquery to serialize data and send to server as ajax post
     const serializedData = $(this).serialize();
     
+   //error message for making sure there is input
    if (serializedData.length < 6) {
-     alert("You need to write something to post!");
-     return;
+     $(this).parents().find("#error-message-null").slideDown()
    }
+   //hide error when they return to form
+   $(this).on("click", () => {
+    $(this).parents().find("#error-message-null").hide();
+    return;
+   })
 
+   //error message for keeping length under 140 characters
    if (serializedData.length > 145) {
-    alert("Only 140 characters allowed!");
+    $(this).parents().find("#error-message-length").slideDown();
     return;
   }
 
+  //hide error message on click
+  $(this).on("click", () => {
+    $(this).parents().find("#error-message-length").hide();
+  })
+
   $.post("/tweets", serializedData)
    .then(() => loadTweetsOnSubmission())
-    
-    
   })
   
-
   $("form").on("submit", function() {
     $(this).trigger("reset")
   })
