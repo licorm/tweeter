@@ -1,6 +1,5 @@
 //check if document is ready
 $(document).ready(function() {
-  console.log('Ready!');
   //event handler for input in tweet-text
   $("#tweet-text").on("input", function() {
     const $counter = $(this).parents().find(".counter");
