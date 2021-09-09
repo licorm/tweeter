@@ -21,15 +21,15 @@ $(document).ready(function() {
     return div.innerHTML;
   };
 
-  const createTweetElement = function(obj) {
+  const createTweetElement = function(tweetData) {
     let $tweet =
     `<article class="tweet">
             <header>
-              <div><img src ="${obj.user.avatars}"></img>${obj.user.name}</div>
-              <div>${obj.user.handle}</div>
+              <div><img src ="${tweetData.user.avatars}"></img>${tweetData.user.name}</div>
+              <div>${tweetData.user.handle}</div>
             </header>
-              <p>${obj.content.text}</p>
-            <footer>${timeago.format(obj.created_at)}
+              <p>${escape(tweetData.content.text)}</p>
+            <footer>${timeago.format(tweetData.created_at)}
               <div>
                 <i class="fas fa-flag"></i>
                 <i class="fas fa-retweet"></i>
@@ -77,12 +77,12 @@ $(document).ready(function() {
     
     //error message for making sure there is input
     if (serializedData.length < 6) {
-      return $(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Looks like you need to write something first...</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
+      return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Looks like you need to write something first...</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
     }
 
     //error message for keeping length under 140 characters
     if (serializedData.length > 145) {
-      return $(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Our character limit is 140 characters!!</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
+      return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Our character limit is 140 characters!!</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
     }
 
     $.post("/tweets", serializedData)
