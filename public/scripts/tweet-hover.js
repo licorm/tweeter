@@ -1,6 +1,5 @@
 //check if document is ready
-
-$(document).ready(function() {
+const func = function() {
   console.log('Ready!');
   //event handler for input in tweet-text
   $(".tweet").hover(
@@ -39,5 +38,6 @@ $(document).ready(function() {
     const $flag = $(this).parents().find(".fas.fa-heart");
     $flag.css('color', '');
   })
-});
+}
+$(document).ready(func);
 
