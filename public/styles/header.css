@@ -19,6 +19,8 @@ h2 {
   header.main-header {
     float: left;
     width: 60%;
+    margin: 2em;
+    margin-top: 6em;
   }
 }
 
