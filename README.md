@@ -4,11 +4,11 @@ Tweeter is a simple, single-page Twitter clone. It uses CSS3, jQuery and HTML5. 
 
 ## Final Product
 
-!["Screenshot of desktop browser"](#)
+!["Screenshot of desktop browser"](https://github.com/licorm/tweeter/blob/master/docs/Screen%20Shot%202021-09-09%20at%206.10.16%20PM.jpeg?raw=true)
 
-!["Screenshot of smaller screen size browser header"](#) 
+!["Screenshot of smaller screen size browser header"](https://github.com/licorm/tweeter/blob/master/docs/Screen%20Shot%202021-09-09%20at%206.11.56%20PM.jpeg?raw=true) 
 
-!["Screenshot of smaller screen size browser tweets"](#) 
+!["Screenshot of smaller screen size browser tweets"](https://github.com/licorm/tweeter/blob/master/docs/Screen%20Shot%202021-09-09%20at%206.12.03%20PM.jpeg?raw=true) 
 
 ## Dependencies
 
