@@ -11,13 +11,14 @@ form {
   display: flex;
   font-style: bold;
   color: crimson;
-  border: 3px solid crimson;
+  border: 2px solid crimson;
   box-shadow: none;
   padding: 0.2em;
   margin-top: 0.5em;
   opacity: .9;
   border-radius:.2em;
   justify-content: space-between;
+  font-size: medium;
 }
 
 button {

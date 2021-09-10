@@ -23,21 +23,30 @@ const func = function() {
     });
   $(".fas.fa-retweet").hover(
     function() {
-      const $flag = $(this).parents().find(".fas.fa-retweet");
-      $flag.css("color", "purple");
+      const $retweet = $(this).parents().find(".fas.fa-retweet");
+      $retweet.css("color", "purple");
     },
     function() {
-      const $flag = $(this).parents().find(".fas.fa-retweet");
-      $flag.css("color", "");
+      const $retweet = $(this).parents().find(".fas.fa-retweet");
+      $retweet.css("color", "");
     });
   $(".fas.fa-heart").hover(
     function() {
-      const $flag = $(this).parents().find(".fas.fa-heart");
-      $flag.css("color", "purple");
+      const $heart = $(this).parents().find(".fas.fa-heart");
+      $heart.css("color", "purple");
     },
     function() {
-      const $flag = $(this).parents().find(".fas.fa-heart");
-      $flag.css("color", "");
+      const $heart = $(this).parents().find(".fas.fa-heart");
+      $heart.css("color", "");
+    });
+  $("#clickme").hover(
+    function() {
+      const $clickme = $(this).parents().find(".fas.fa-angle-double-down");
+      $clickme.animate({ marginTop: "0.2em"}).animate({ marginTop: "0em"});
+      },
+    function() {
+      const $clickme = $(this).parents().find(".fas.fa-angle-double-down");
+      $clickme.stop();
     });
 };
 $(document).ready(func);

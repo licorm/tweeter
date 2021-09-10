@@ -37,10 +37,11 @@
     <nav font-family="bungee">
       <span>tweeter</span>
       <div class="new-tweet-nav">
-        <b>Write </b>a new tweet
-        <div>
-          <i class="fas fa-angle-double-down"></i>
-        </div>
+        <button type="button" id="clickme"><b>Write </b>a new tweet
+          <div>
+            <i class="fas fa-angle-double-down"></i>
+          </div>
+        </button>
       </div>
     </nav>
 
@@ -60,7 +61,7 @@
         <div class="error-message" style="display:none">
           
         </div>
-        <form method="POST" action="/tweets">
+        <form method="POST" action="/tweets" style="display:none">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="submission-button">

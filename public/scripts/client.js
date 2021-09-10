@@ -67,6 +67,10 @@ $(document).ready(function() {
       });
   };
 
+  //function to reveal submit tweet form
+  $("#clickme").on("click", function() {
+    $("form").slideDown();
+  })
 
   //using jquery to add event listener for submitting tweets in the form element
   $("form").submit(function(event) {
@@ -79,12 +83,12 @@ $(document).ready(function() {
     
     //error message for making sure there is input
     if (serializedData.length < 6) {
-      return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Looks like you need to write something first...</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
+      return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Looks like you need to write something first...</p><i class="fas fa-exclamation-circle"></i>').slideDown();
     }
 
     //error message for keeping length under 140 characters
     if (serializedData.length > 145) {
-      return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Our character limit is 140 characters!!</p><i class="fas fa-exclamation-circle"></i>').show().slideDown();
+      return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Our character limit is 140 characters!!</p><i class="fas fa-exclamation-circle"></i>').slideDown();
     }
 
     //ajax post request to the /tweets page
@@ -95,7 +99,7 @@ $(document).ready(function() {
         //resets form so the user can write a new tweet
         $(this).trigger("reset");
         //hides any error messages
-        $(".error-message").hide();
+        $(".error-message").slideUp();
       });
   });
 

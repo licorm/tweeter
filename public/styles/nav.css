@@ -20,11 +20,17 @@ span {
 }
 
 .new-tweet-nav {
-  font-size: x-large;
+  font-size: X-large;
 }
 
 .fas {
   display: flex;
   justify-content: center;
   color: crimson;
+}
+
+#clickme {
+  background-color: #90bdbb;
+  background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+  border-style: none;
 }
