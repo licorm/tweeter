@@ -72,6 +72,11 @@ $(document).ready(function() {
     $("form").slideDown();
   })
 
+  //function to go to top of page
+  $("#footerButton").on("click", function() {
+    $(window).scrollTop(0);
+  })
+
   //using jquery to add event listener for submitting tweets in the form element
   $("form").submit(function(event) {
     

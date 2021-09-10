@@ -33,6 +33,19 @@ main {
   align-items: stretch;
 }
 
+footer.buttonTop {
+  z-index: 3;
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.3em;
+  border-style: none;
+}
+
+#footerButton {
+  background-color: transparent;
+  border-style: none;
+}
+
 @media only screen and (min-width: 800px) {
   body {
     display: flex;

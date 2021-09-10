@@ -39,6 +39,7 @@ const func = function() {
       const $heart = $(this).parents().find(".fas.fa-heart");
       $heart.css("color", "");
     });
+  //hover for write a new tweet
   $("#clickme").hover(
     function() {
       const $clickme = $(this).parents().find(".fas.fa-angle-double-down");
@@ -47,6 +48,16 @@ const func = function() {
     function() {
       const $clickme = $(this).parents().find(".fas.fa-angle-double-down");
       $clickme.stop();
+    });
+   // hover for button to bring to top
+  $(".buttonTop").hover(
+    function() {
+      const $buttonTop = $(this).parents().find(".buttonTop");
+      $buttonTop.animate({ opacity: "0.2"}, "slow").animate({opacity: "1"}, "slow");
+      },
+    function() {
+      const $buttonTop = $(this).parents().find(".buttonTop");
+      $buttonTop.stop();
     });
 };
 $(document).ready(func);
