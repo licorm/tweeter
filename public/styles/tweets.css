@@ -36,12 +36,13 @@ article.tweet p {
   border-bottom: 3px solid plum;
   display: flex;
   align-self: center;
+  flex-wrap: wrap;
   padding: 0.5em;
 }
 
 article.tweet div {
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
   align-items: center;
 }
 

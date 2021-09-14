@@ -9,6 +9,9 @@ $(document).ready(function() {
   //function that takes multiple strings of html and adds it to one html string
   const renderTweets = function(tweets) {
     let $tweetString = "";
+    if (!Array.isArray(tweets)) {
+      return createTweetElement(tweets);
+    }
     for (const tweet of tweets) {
       $tweetString += createTweetElement(tweet);
     }
@@ -43,9 +46,18 @@ $(document).ready(function() {
   };
 
   //function for fetching tweets from /tweets
-  const loadTweets = function() {
+  const loadTweets = function(firstLoad) {
     $.ajax("/tweets", { method: "GET" })
       .then(function(response) {
+        
+        //checks if this is a reload or a submission
+        if (!firstLoad) {
+          const lastTweet = response.length - 1
+          $("#tweets-container").append(renderTweets(response[lastTweet]));
+          func();
+          return;
+        } 
+        //if its a first load it will just load all of the data
         $("#tweets-container").prepend(renderTweets(response));
 
         //function to load css styling
@@ -54,18 +66,7 @@ $(document).ready(function() {
   };
   
   //call the function to load tweets to the page
-  loadTweets();
-
-  //function for fetching tweets on submission (empties the div unlike function about)
-  const loadTweetsOnSubmission = function() {
-    $.ajax("/tweets", { method: "GET" })
-      .then(function(response) {
-        $("#tweets-container").empty().prepend(renderTweets(response));
-
-        //function to load css styling
-        func();
-      });
-  };
+  loadTweets(true);
 
   //function to reveal submit tweet form
   $("#clickme").on("click", function() {
@@ -85,28 +86,36 @@ $(document).ready(function() {
 
     //use jquery to serialize data and send to server as ajax post
     const serializedData = $(this).serialize();
+    let $counter = $(this).parents().children().find(".counter");
     
     //error message for making sure there is input
-    if (serializedData.length < 6) {
+    if ($counter.val() >= 140) {
       return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Looks like you need to write something first...</p><i class="fas fa-exclamation-circle"></i>').slideDown();
     }
 
     //error message for keeping length under 140 characters
-    if (serializedData.length > 145) {
+    if ($counter.val() < 0) {
       return $(this).parents().children().find(".error-message").html('<i class="fas fa-exclamation-circle"></i><p>Our character limit is 140 characters!!</p><i class="fas fa-exclamation-circle"></i>').slideDown();
     }
-
+    
+   
     //ajax post request to the /tweets page
     $.post("/tweets", serializedData)
       .then(() => {
         //reload tweets containter upon posting so that it shows new tweet
-        loadTweetsOnSubmission();
+        loadTweets(false);
         //resets form so the user can write a new tweet
         $(this).trigger("reset");
         //hides any error messages
         $(".error-message").slideUp();
       });
   });
+
+  //error messages will slide away once edits are made
+  $("#tweet-text").on("click", function() {
+    $(".error-message").slideUp();
+  })
+
 
 });
 
